@@ -1,0 +1,89 @@
+<html>
+
+    <head>
+        <title>Test Nueral Net</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="brainwave.js"></script>
+
+    </head>
+
+    <body>
+
+        <script charset="utf-8">
+
+            /////////////////////////////////////
+            // Test that a single neuron works //
+            /////////////////////////////////////
+            console.log('Test neuron');
+            console.log(Brainwave)
+            var neuron = new Brainwave.Neuron(2);
+            console.log(neuron);
+            console.log(neuron.getOutput([1,1]));
+            console.log(neuron.getOutput([1,2]));
+            console.log(neuron.getOutput([-43,15]));
+
+            ///////////////////////////////////////////
+            // Test that a single neruon layer works //
+            ///////////////////////////////////////////
+            console.log('Test neuron layer');
+            var nueronLayer = new Brainwave.NeuronLayer(4, 2);
+            console.log(nueronLayer.getOutput([1,1]));
+            console.log(nueronLayer.getOutput([1,2]));
+            console.log(nueronLayer.getOutput([-43,15]));
+
+            ///////////////////////////////////////
+            // Test the network works as a whole //
+            ///////////////////////////////////////
+            console.log('Test a NeuralNetwork');
+            // numInputs, numOutputs, numHiddenLayers, numNeuronsPerHiddenLayer
+            var neuralNet = new Brainwave.Network(2, 2, 1, 6);
+            console.log(neuralNet.run([1,1]));
+            console.log(neuralNet.run([2,1]));
+            console.log(neuralNet.run([-43,15]));
+
+            console.log(neuralNet.getNumWeights());
+
+            // Test put weights
+            var weights = [];
+            for (var i = 0; i < neuralNet.getNumWeights(); i++) {
+                weights.push(i);
+            }
+
+            neuralNet.importWeights(weights);
+            console.log(neuralNet);
+            console.log(neuralNet.exportWeights());
+
+            ////////////////////////////////
+            // Test the genetic algorithm //
+            ////////////////////////////////
+            console.log('Test the genetic alg');
+            var genetics = new Brainwave.Genetics(6,5, { numElite: 2 });
+            console.log(genetics);
+
+            // Test the genetics sorting of the genomes
+            genetics.population[0].fitness = 2;
+            genetics.population[1].fitness = 1;
+            genetics.population[2].fitness = 1;
+            genetics.population[3].fitness = 5;
+            genetics.population[4].fitness = 3;
+            console.log('Testing the sorting function');
+            console.log(genetics.population);
+            console.log(genetics.sortGenomes(genetics.population));
+
+            console.log('Testing grabNBest');
+            console.log(genetics.grabNBest(2,1));
+
+            // console.log('Testing calcStats');
+            console.log(genetics.calcStats());
+
+            console.log('Testing getGenomeRoulette');
+            console.log(genetics.getGenomeRoulette());
+
+            console.log('Testing Epoch. The mother of all functions');
+            console.log(genetics.epoch(genetics.population));
+
+        </script>
+
+    </body>
+
+</html>
