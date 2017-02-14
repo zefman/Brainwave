@@ -423,7 +423,7 @@ module.exports = function (numInputs, numOutputs, numHiddenLayers, numNeuronsPer
         NeuralNetwork.layers.push(new Brainwave.NeuronLayer(NeuralNetwork.numNeuronsPerHiddenLayer, NeuralNetwork.numInputs));
 
         // Create the other hidden layers if there are any
-        for (var i = 0; i < this.numHiddenLayers - 1; i++) {
+        for (var i = 0; i < NeuralNetwork.numHiddenLayers - 1; i++) {
             // This time the hidden layer should have the number of neurons
             // per layer as the number of inputs, as it is behind the input layer
             NeuralNetwork.layers.push(new Brainwave.NeuronLayer(NeuralNetwork.numNeuronsPerHiddenLayer, NeuralNetwork.numNeuronsPerHiddenLayer));
