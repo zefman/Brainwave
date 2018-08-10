@@ -16,7 +16,7 @@ To begin simply include Brainwave.js on your page
 
 Brainwave has two main components, Network which of course is the neural net, and Genetics which is the genetic algorithm used to improve a population of networks.
 
-##Creating a Neural Network
+## Creating a Neural Network
 
 A network of varying size and structure can be created easily with the Network object. When a new network is first created its weights and biases are all initialised randomly.
 
@@ -24,7 +24,7 @@ A network of varying size and structure can be created easily with the Network o
 var network = new Brainwave.Network(numInputs, numOutputs, numHiddenLayers, numNeuronsPerHiddenLayer);
 ```
 
-###Running the network
+### Running the network
 The network expects an array of floats to be passed as inputs. After being passed through the network, an array of output values will then be returned.
 
 ```javascript
@@ -36,7 +36,7 @@ network.run([3.56, 2.1, 18.9, -4.7]);
 // [ 0.656, 0.983 ]
 ```
 
-## Evolving A Population of Networks
+# Evolving A Population of Networks
 
 I plan to add a training helper object to make the process of setting up a bunch of networks and training them super simple once I get time, but currently networks can still be trained without too much trouble.
 
